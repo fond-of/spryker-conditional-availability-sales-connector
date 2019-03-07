@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\ConditionalAvailabilitySalesConnector\Communication\Plugin\SalesExtension;
 
+use DateTime;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SpySalesOrderItemEntityTransfer;
@@ -27,7 +28,9 @@ class DeliveryTimeOrderItemExpanderPreSavePlugin extends AbstractPlugin implemen
         ItemTransfer $itemTransfer,
         SpySalesOrderItemEntityTransfer $salesOrderItemEntity
     ): SpySalesOrderItemEntityTransfer {
-        $salesOrderItemEntity->setDeliveryTime($itemTransfer->getDeliveryTime());
+        $deliveryTime = DateTime::createFromFormat('Y-m-d', $itemTransfer->getDeliveryTime());
+
+        $salesOrderItemEntity->setDeliveryTime($deliveryTime);
 
         return $salesOrderItemEntity;
     }
