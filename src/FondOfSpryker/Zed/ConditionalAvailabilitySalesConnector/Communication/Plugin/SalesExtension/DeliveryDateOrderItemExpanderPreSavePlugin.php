@@ -9,7 +9,7 @@ use Generated\Shared\Transfer\SpySalesOrderItemEntityTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\SalesExtension\Dependency\Plugin\OrderItemExpanderPreSavePluginInterface;
 
-class DeliveryTimeOrderItemExpanderPreSavePlugin extends AbstractPlugin implements OrderItemExpanderPreSavePluginInterface
+class DeliveryDateOrderItemExpanderPreSavePlugin extends AbstractPlugin implements OrderItemExpanderPreSavePluginInterface
 {
     /**
      * Specification:
@@ -28,9 +28,9 @@ class DeliveryTimeOrderItemExpanderPreSavePlugin extends AbstractPlugin implemen
         ItemTransfer $itemTransfer,
         SpySalesOrderItemEntityTransfer $salesOrderItemEntity
     ): SpySalesOrderItemEntityTransfer {
-        $deliveryTime = DateTime::createFromFormat('Y-m-d', $itemTransfer->getDeliveryTime());
+        $deliveryDate = DateTime::createFromFormat('Y-m-d', $itemTransfer->getDeliveryDate());
 
-        $salesOrderItemEntity->setDeliveryTime($deliveryTime);
+        $salesOrderItemEntity->setDeliveryDate($deliveryDate);
 
         return $salesOrderItemEntity;
     }
