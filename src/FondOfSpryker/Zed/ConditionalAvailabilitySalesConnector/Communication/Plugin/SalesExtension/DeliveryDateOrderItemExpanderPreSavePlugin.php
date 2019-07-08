@@ -28,9 +28,8 @@ class DeliveryDateOrderItemExpanderPreSavePlugin extends AbstractPlugin implemen
         ItemTransfer $itemTransfer,
         SpySalesOrderItemEntityTransfer $salesOrderItemEntity
     ): SpySalesOrderItemEntityTransfer {
-        $deliveryDate = DateTime::createFromFormat('Y-m-d', $itemTransfer->getDeliveryDate());
-
-        $salesOrderItemEntity->setDeliveryDate($deliveryDate);
+        $salesOrderItemEntity->setDeliveryDate($itemTransfer->getDeliveryDate())
+            ->setConcreteDeliveryDate($itemTransfer->getConcreteDeliveryDate());
 
         return $salesOrderItemEntity;
     }
