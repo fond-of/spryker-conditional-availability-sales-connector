@@ -2,7 +2,6 @@
 
 namespace FondOfSpryker\Zed\ConditionalAvailabilitySalesConnector\Communication\Plugin\SalesExtension;
 
-use DateTime;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SpySalesOrderItemEntityTransfer;
